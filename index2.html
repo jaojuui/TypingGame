@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .texttype {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .typed-text {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Typing Game</h1>
+    <div>
+        <h1 class="texttype" id="target-text">hello</h1>
+    </div>
+    <div class="typed-text" id="typed-text">Start typing...</div>
+
+    <script>
+        const targetText = "hello"; // ข้อความเป้าหมาย
+        let typedText = ""; // เก็บข้อความที่ผู้ใช้พิมพ์
+        const targetElement = document.getElementById("target-text");
+        const typedElement = document.getElementById("typed-text");
+
+        // ฟังเหตุการณ์ keydown
+        document.addEventListener("keydown", (event) => {
+            // กด Backspace เพื่อลบตัวอักษร
+            if (event.key === "Backspace") {
+                typedText = typedText.slice(0, -1);
+            } 
+            // กดตัวอักษรทั่วไป
+            else if (event.key.length === 1) {
+                typedText += event.key;
+            }
+
+            // อัปเดตข้อความที่พิมพ์และสี
+            let highlightedText = "";
+            for (let i = 0; i < targetText.length; i++) {
+                if (i < typedText.length) {
+                    if (typedText[i] === targetText[i]) {
+                        highlightedText += `<span class="highlight">${targetText[i]}</span>`;
+                    } else {
+                        highlightedText += `<span class="error">${targetText[i]}</span>`;
+                    }
+                } else {
+                    highlightedText += targetText[i];
+                }
+            }
+
+            // อัปเดต HTML
+            targetElement.innerHTML = highlightedText;
+
+            // แสดงข้อความที่ผู้ใช้พิมพ์
+            typedElement.textContent = typedText || "Start typing...";
+        });
+    </script>
+</body>
+</html>

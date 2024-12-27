@@ -1,0 +1,14 @@
+body {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* height: 100vh; */
+}
+.headtext {
+    text-align: center;
+}
+.targettext{
+    text-align: center;
+    opacity: 0.5; 
+    font-size: 1200%;
+}
