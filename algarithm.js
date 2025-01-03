@@ -35,15 +35,17 @@ document.addEventListener("keydown", (event) => {
 
     if (targetText[randomText] === typedText) {
         scoreuser += 1;
-        scoreElement.innerHTML =  scoreuser;
         typedText = "";
         randomText = Math.floor(Math.random() * targetText.length);
         targetElement.innerHTML = targetText[randomText];
-    }if(falsetext > 3) {
+    }if(falsetext > 2) {
         falsetext=0;
-        scoreuser -= 2;
         typedText = "";
         randomText = Math.floor(Math.random() * targetText.length);
         targetElement.innerHTML = targetText[randomText];
+        if(scoreuser>0){
+            scoreuser -= 1;
+        }
     }
+    scoreElement.innerHTML =  scoreuser;
 });
