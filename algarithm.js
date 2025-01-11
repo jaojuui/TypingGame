@@ -23,7 +23,7 @@ let targetText = [
   
 const targetElement = document.getElementById("target-text");
 const scoreElement = document.getElementById("score");  
-const typedElement = document.getElementById("typed-text");
+// const typedElement = document.getElementById("typed-text");
 const startButton = document.getElementById("startbutton");
 const countdownElement = document.getElementById("time");
 let randomText = Math.floor(Math.random() * targetText.length); 
@@ -63,7 +63,7 @@ document.addEventListener("keydown", (event) => {
             randomText = Math.floor(Math.random() * targetText.length);
             targetElement.innerHTML = targetText[randomText];
             falsetext=0;
-            c = targetText[randomText];
+            // c = targetText[randomText];
         }if(falsetext >= 2) {
             falsetext=0;
             typedText = "";
@@ -86,7 +86,7 @@ function updateCountdown() {
     startButton.style.boxShadow = "2px 2px 5px rgb(166, 168, 46), -2px -2px 5px rgba(148, 150, 13, 0.7)"; // เพิ่มเงาให้กับปุ่ม
     startButton.onclick = () => {
         location.reload();
-       };
+    };
   
     timerId = setInterval(() => {
       timeLeft--;
